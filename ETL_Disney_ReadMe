@@ -1,4 +1,3 @@
-We will extract data from 3 csv datasets to transform Disney movie data and vizualize.  We will clean the 3 datasets and load the combined data into as Postgres database.
-where data set from?
-website plan?
-API?
+We extracted data from three CSV datasets to organize and visualize Disney movie data. 
+
+The full write-up can be found here: https://docs.google.com/document/d/1cECrAW92-l097pmJLRSe9qswgY3kpJWOjC8uPhX23cc/edit
