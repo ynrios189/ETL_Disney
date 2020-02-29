@@ -5,6 +5,7 @@ import json
 from config import postgres_user, portgres_pw
 
 app = Flask(__name__)
+<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///disney.db'
 @app.route("/")
 def home():
@@ -23,6 +24,23 @@ def api(json_enabled):
     
     if json_enabled == "json":
         return output_df.to_json(orient='records')
+=======
+app.config["DEBUG"] = True
+
+@app.route("/")
+def index():
+    return render_template("index.html", message="Say hello to our API")
+
+@app.route("/api/", defaults={"json_enabled": ""})
+@app.route("/api/<json_enabled>")
+def api(json_enabled):
+    engine = create_engine(f"postgresql://{postgres_user}:{portgres_pw}@localhost/disney_db")
+    output_df = pd.read_sql("SELECT * FROM characters.'Movie_Titles'", engine)
+
+    if json_enabled == "json":
+        return output_df.to_json(orient='records')
+
+>>>>>>> 0338df4cbd07636c59332c51a769f90f79390ec0
     return render_template("api.html", data=output_df.to_json(orient='records'))
 
 if __name__=="__main__":
